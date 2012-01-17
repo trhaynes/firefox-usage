@@ -1,0 +1,2 @@
+-- Grab all the start/active/shutdown/inactive events for the timeframe
+SELECT survey.user_id, q5, q6, event_code, timestamp FROM survey, events WHERE survey.user_id == events.user_id AND (event_code == 1 OR event_code == 2 OR event_code == 4 OR event_code == 5) AND timestamp/1000 >= CAST(strftime("%s", "2010-11-03 00:00:00") as INTEGER) AND timestamp/1000 < CAST(strftime("%s", "2010-11-10 00:00:00") as INTEGER);
